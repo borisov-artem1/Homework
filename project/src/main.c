@@ -1,10 +1,13 @@
 #include "utils.h"
+#include "case3.h"
+#include "case4.h"
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
 
-#define TST_FOO_FIX     1
-#define TST_FOO_IMPL    2
-#define TST_MOD_IMPL    3
+#define TST_FOO_FIX 1
+#define TST_FOO_IMPL 2
+#define TST_MOD_IMPL 3
+#define TST_MOD_FIX 4
 
 
 /* NOTE(stitaevskiy):
@@ -40,7 +43,7 @@ int main(int argc, const char** argv) {
         case TST_FOO_IMPL: {
             if (argc == 4) {
                  int base = atoi(data);
-                 int pow =  atoi(argv[3]);
+                 int pow = atoi(argv[3]);
                  int res = custom_pow(base, pow);    // TODO(artemborisov): Implement me
 
                  printf("%d\n", res);
@@ -48,12 +51,17 @@ int main(int argc, const char** argv) {
             break;
         }
         case TST_MOD_IMPL: {
-            // int num = atoi(data);
-
+             int num = atoi(data);
+             printf("%d", simple_num(num));
             // TODO(artemborisov): Print to stdout `1` if `num` is prime number and `0` otherwise
             // This function MUST be implemented in
             // a separate C-module (not in `main` or `utils` module)
         break;
+        }
+        case TST_MOD_FIX: {
+            int rec_number = atoi(data);
+            print_int_number(rec_number);
+            break;
         }
         default: {
             return ERR_WRONG_FLG;
