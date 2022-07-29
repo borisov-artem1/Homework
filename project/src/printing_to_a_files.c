@@ -1,7 +1,5 @@
 #include "utils.h"
 void masterWrite(FILE *ofPTR, Data Client) {
-    // char format_string[MAX_STR_SIZE] = {};
-    // snpritf(format_string, MAX_STR_SIZE, "%%%ds", MAX_BUFFER_SIZE - 1);
     printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
            "1 Number account: ",
            "2 Client name: ",

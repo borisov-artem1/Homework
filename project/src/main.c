@@ -54,6 +54,7 @@ int main(void) {
             }
             case 4: {
 
+                break;
             }
             default: {
                 puts("error");
