@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "test_case.h"
 int main(void) {
     int choice = 0;
     FILE *Ptr = NULL;
@@ -53,7 +54,7 @@ int main(void) {
                 break;
             }
             case 4: {
-
+                test_rw_case();
                 break;
             }
             default: {
