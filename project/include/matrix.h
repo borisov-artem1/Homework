@@ -2,9 +2,14 @@
 #define _MATRIX_H_
 
 #include <stddef.h>
-
-
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define COUNT_ROWS_AND_COLS 2
 typedef struct Matrix {
+    size_t mat_rows;
+    size_t mat_cols;
+    double (*value)[];
 } Matrix;
 
 // Init/release operations
