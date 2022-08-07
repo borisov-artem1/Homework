@@ -9,7 +9,7 @@
 typedef struct Matrix {
     size_t mat_rows;
     size_t mat_cols;
-    double **value;
+    double *value;
 } Matrix;
 
 // Init/release operations
