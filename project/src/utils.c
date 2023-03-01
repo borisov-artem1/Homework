@@ -1,6 +1,4 @@
 #include "utils.h"
-#include <stdio.h>
-#include <stddef.h>
 void masterWrite(FILE *ofPTR, Data Client) {
     printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
            "1 Number account: ",

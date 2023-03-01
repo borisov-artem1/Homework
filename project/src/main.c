@@ -1,6 +1,4 @@
 #include "utils.h"
-#include <stdio.h>
-#include <stddef.h>
 int main(void) {
     int choice = 0;
     FILE *Ptr = NULL;
