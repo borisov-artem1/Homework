@@ -18,7 +18,7 @@ int main(void) {
     while (scanf("%d", &choice) != -1) {
         switch(choice) {
             case 1:
-                Ptr = fopen("record.dat", "r+");
+                Ptr = fopen(REC_DAT, "r+");
                 if (Ptr == NULL) {
                     puts("Not acess");
                 } else {
@@ -27,7 +27,7 @@ int main(void) {
                 }
                 break;
             case 2:
-                Ptr = fopen(filename, "r+");
+                Ptr = fopen(TRANS_DAT, "r+");
                 if(Ptr == NULL){
                     puts("Not acess");
                 } else {
@@ -36,9 +36,9 @@ int main(void) {
                 }
                 break;
             case 3:
-                Ptr = fopen("record.dat", "r");
-                Ptr_2 = fopen("transaction.dat", "r");
-                blackrecord = fopen("blackrecord.dat", "w");
+                Ptr = fopen(REC_DAT, "r");
+                Ptr_2 = fopen(TRANS_DAT, "r");
+                blackrecord = fopen(BLACK_DAT, "w");
                 if(Ptr == NULL || Ptr_2 == NULL || blackrecord == NULL) {
                     puts("exit");
                 } else {
