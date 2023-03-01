@@ -14,9 +14,9 @@ int main(void) {
     transfer.indebtedness = 0;
     transfer.credit_limit = 0;
     transfer.cash_payments = 0;
-    printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n" );
+    printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
     while (scanf("%d", &choice) != -1) {
-        switch(choice) {
+        switch (choice) {
             case 1:
                 Ptr = fopen(REC_DAT, "r+");
                 if (Ptr == NULL) {
@@ -28,7 +28,7 @@ int main(void) {
                 break;
             case 2:
                 Ptr = fopen(TRANS_DAT, "r+");
-                if(Ptr == NULL){
+                if (Ptr == NULL) {
                     puts("Not acess");
                 } else {
                     transactionWrite(Ptr, transfer);
@@ -39,7 +39,7 @@ int main(void) {
                 Ptr = fopen(REC_DAT, "r");
                 Ptr_2 = fopen(TRANS_DAT, "r");
                 blackrecord = fopen(BLACK_DAT, "w");
-                if(Ptr == NULL || Ptr_2 == NULL || blackrecord == NULL) {
+                if (Ptr == NULL || Ptr_2 == NULL || blackrecord == NULL) {
                     puts("exit");
                 } else {
                     blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);

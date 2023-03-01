@@ -27,12 +27,12 @@ void masterWrite(FILE *ofPTR, Data Client) {
                "9 Client cash payments:");
     }
 }
-void transactionWrite(FILE *ofPtr, Data transfer){
+void transactionWrite(FILE *ofPtr, Data transfer) {
     printf("%s\n%s\n",
            "1 Number account: ",
            "2 Client cash payments: ");
     while (scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1) {
-        fprintf(TRANS_DAT, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);
+        fprintf(ofPtr, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);
         printf("%s\n%s\n",
                "1 Number account:",
                "2 Client cash payments: ");
@@ -51,7 +51,7 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
         fprintf(blackrecord, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n", client_data.Number,
                 client_data.Name, client_data.Surname, client_data.addres,
                 client_data.TelNumber, client_data.indebtedness,
-                client_data.credit_limit, client_data.cash_payments) ;
+                client_data.credit_limit, client_data.cash_payments);
         rewind(ofPTR_2);
     }
 }
