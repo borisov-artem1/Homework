@@ -6,14 +6,14 @@ int main(void) {
     FILE *blackrecord = NULL;
     Data client_data;
     Data transfer;
-    Data client_data.Number = 0;
-    Data client_data.indebtedness = 0;
-    Data client_data.credit_limit = 0;
-    Data client_data.cash_payments = 0;
-    Data transfer.Number = 0;
-    Data transfer.indebtedness = 0;
-    Data transfer.credit_limit = 0;
-    Data transfer.cash_payments = 0;
+    client_data.Number = 0;
+    client_data.indebtedness = 0;
+    client_data.credit_limit = 0;
+    client_data.cash_payments = 0;
+    transfer.Number = 0;
+    transfer.indebtedness = 0;
+    transfer.credit_limit = 0;
+    transfer.cash_payments = 0;
     printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n" );
     while (scanf("%d", &choice) != -1) {
         switch(choice) {
