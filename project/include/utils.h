@@ -1,7 +1,5 @@
 #define UTILS_H
 #ifndef UTILS_H
-#include <stdio.h>
-#include <stddef.h>
 #define filename "transaction.dat";
 typedef struct masterRecord {
     int Number;
