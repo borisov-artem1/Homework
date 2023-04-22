@@ -18,6 +18,12 @@ typedef struct masterRecord {
     double cash_payments;
 } Data;
 
+typedef struct Some_data {
+    int test_number;
+    char test_name[20];
+
+} some_data;
+
 
 void masterWrite(FILE *ofPTR, Data Client);
 void transactionWrite(FILE *ofPtr, Data transfer);
