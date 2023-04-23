@@ -3,7 +3,9 @@ HDRS_DIR = project/include
 
 SRCS = project/src/main.c \
 	   project/src/read_from_file.c \
-	   project/src/print_to_file.c
+	   project/src/print_to_file.c \
+	   project/src/test_case.c \
+	   project/src/rw_case.c
 
 .PHONY: all build rebuild check test memtest clean
 

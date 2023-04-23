@@ -14,8 +14,8 @@ int main(void) {
     transfer.indebtedness = 0;
     transfer.credit_limit = 0;
     transfer.cash_payments = 0;
-    printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
-    while (scanf("%d", &choice) != -1) {
+    printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n4 read/write test\n");
+    while (scanf("%d", &choice) != -1 && choice != 10) {
         switch (choice) {
             case 1:
                 Ptr = fopen(REC_DAT, "r+");
@@ -48,10 +48,13 @@ int main(void) {
                     fclose(blackrecord);
                 }
                 break;
+            case 4:
+                test_rw();
+                break;
             default:
                 puts("error");
         }
-        printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
+        printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n4 read/write test\n");
     }
     return 0;
 }
