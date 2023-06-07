@@ -5,7 +5,8 @@ SRCS = project/src/main.c \
 	   project/src/read_write_data.c \
 	   project/src/manage_data.c \
 	   project/src/logic.c
-
+TEST_SRCS = project/test/rw_case.c \
+			project/test/test_case.c
 .PHONY: all build rebuild check test memtest clean
 
 all: clean check test memtest

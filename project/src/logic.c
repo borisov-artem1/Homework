@@ -10,7 +10,7 @@ int get_case_choice(void) {
     }
     return choice;
 }
-void print_to_file_case(const char *name_of_file, void (*manager_to_execute) (FILE*, Data)) {
+void print_to_file_case(const char *name_of_file, void(*manager_to_execute)(FILE*, Data)) {
     Data client_info = {0};
     FILE *opened_file = fopen(name_of_file, "r+");
     if (opened_file == NULL) {

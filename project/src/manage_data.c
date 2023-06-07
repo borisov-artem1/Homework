@@ -49,7 +49,8 @@ void manager_black_dat(FILE *rec_file,
                        Data trans_struct) {
     fseek(black_file, 0, SEEK_END);
     while (fscan_rec_file(rec_file, &rec_struct) == 8 || fscan_rec_file(rec_file, &rec_struct) != EOF) {
-        while (fscan_trans_file(trans_file, &trans_struct) == 2 || fscan_trans_file(trans_file, &trans_struct) != EOF) {
+        while (fscan_trans_file(trans_file, &trans_struct) == 2 ||
+        fscan_trans_file(trans_file, &trans_struct) != EOF) {
             summing_data_fields(&rec_struct, &trans_struct);
         }
         write_rec_data(black_file, rec_struct);

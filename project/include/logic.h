@@ -1,5 +1,5 @@
-#ifndef HOMEWORK_LOGIC_H
-#define HOMEWORK_LOGIC_H
+#ifndef PROJECT_INCLUDE_LOGIC_H_
+#define PROJECT_INCLUDE_LOGIC_H_
 #include "utils.h"
 #define INVALID_STATUS_CODE -1
 #define OPEN_FILE_ERROR "--CAN'T OPEN FILE--"
@@ -15,10 +15,10 @@ enum actions {
     BLACK_RECORD_CASE
 };
 int get_case_choice(void);
-void print_to_file_case(const char *name_of_file, void (*manager_to_execute) (FILE*, Data));
+void print_to_file_case(const char *name_of_file, void(*manager_to_execute)(FILE*, Data));
 void print_update_black_case(const char *rec_file_name,
                              const char *trans_file_name,
                              const char *black_file_name,
                              void (*manager_to_execute)(FILE*, FILE*, FILE*, Data, Data));
 void run_case_manager(void);
-#endif //HOMEWORK_LOGIC_H
+#endif  // PROJECT_INCLUDE_LOGIC_H_

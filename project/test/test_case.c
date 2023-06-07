@@ -1,6 +1,7 @@
 #include "test_case.h"
 #define SUCCESS_STATUS_CODE "--SUCCESS--"
 #define INVALID_STATUS_CODE "--ERROR--"
+
 void test_rw(void) {
 
     const char *filename = REC_DAT;
@@ -29,4 +30,8 @@ void test_rw(void) {
            expected_data.test_cash_payments,
            got_data.test_cash_payments);
     puts(INVALID_STATUS_CODE);
+}
+int main (void) {
+    test_rw();
+    return 0;
 }
