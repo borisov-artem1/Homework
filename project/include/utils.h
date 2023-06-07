@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <unistd.h>
-#define TRANS_DAT "transaction.dat"
-#define REC_DAT "record.dat"
-#define BLACK_DAT "blackrecord.dat"
 typedef struct masterRecord {
     int Number;
     char Name[20];
@@ -18,17 +15,13 @@ typedef struct masterRecord {
     double cash_payments;
 } Data;
 
-typedef struct Some_data {
-    int test_number;
-    char test_name[20];
-    double test_cash_payments;
-} some_data;
-
-
-void masterWrite(FILE *ofPTR, Data Client);
-void transactionWrite(FILE *ofPtr, Data transfer);
-void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
-void test_rw();
-void write_to_file(const char *filename, some_data *expected_data);
-void read_from_file(const char *filename, some_data *data);
+void printing_data_fields(char* data_fields[], int amount_of_client_fields);
+void manager_rec_dat(FILE *record_file, Data Client);
+void manager_trans_dat(FILE *trans_file, Data transfer);
+void manager_black_dat(FILE *rec_file,
+                       FILE *trans_file,
+                       FILE *black_file,
+                       Data rec_struct,
+                       Data trans_struct);
+void summing_data_fields(Data *rec_struct, Data *trans_struct);
 #endif  // PROJECT_INCLUDE_UTILS_H_

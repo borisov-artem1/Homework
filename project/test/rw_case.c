@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "test_case.h"
 
 void write_to_file(const char *filename, some_data *expected_data) {
     FILE *file_rec_dat = NULL;

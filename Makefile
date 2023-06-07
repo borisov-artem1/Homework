@@ -2,10 +2,9 @@ TARGET = ./main.out
 HDRS_DIR = project/include
 
 SRCS = project/src/main.c \
-	   project/src/read_from_file.c \
-	   project/src/print_to_file.c \
-	   project/src/test_case.c \
-	   project/src/rw_case.c
+	   project/src/read_write_data.c \
+	   project/src/manage_data.c \
+	   project/src/logic.c
 
 .PHONY: all build rebuild check test memtest clean
 
