@@ -1,5 +1,6 @@
 #ifndef PROJECT_INCLUDE_TEST_CASE_H_
 #define PROJECT_INCLUDE_TEST_CASE_H_
+#include "utils.h"
 typedef struct Some_data {
     int test_number;
     char test_name[20];

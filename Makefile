@@ -1,4 +1,5 @@
 TARGET = ./main.out
+TEST_TARGET = ./test_case.out
 HDRS_DIR = project/include
 
 SRCS = project/src/main.c \
@@ -17,6 +18,14 @@ $(TARGET): $(SRCS)
 build: $(TARGET)
 
 rebuild: clean build
+
+$(TEST_TARGET): $(TEST_SRCS)
+	$(CC) -Wpedantic -Wall -Wextra -Werror -I $(HDRS_DIR) -o $(TEST_TARGET) $(CFLAGS) $(TEST_SRCS)
+
+test_build: $(TEST_TARGET)
+
+test_case: $(TEST_TARGET)
+	$(TEST_TARGET)
 
 check:
 	./run_linters.sh

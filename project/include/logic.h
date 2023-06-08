@@ -6,9 +6,9 @@
 #define CASE_ERROR "--THIS CASE DOESN'T EXIST--"
 #define BEGIN 0
 #define END 4
-#define TRANS_DAT "transaction.dat.gold"
-#define REC_DAT "record.dat.gold"
-#define BLACK_DAT "blackrecord.dat.gold"
+#define TRANS_DAT "transaction.dat"
+#define REC_DAT "record.dat"
+#define BLACK_DAT "blackrecord.dat"
 enum actions {
     MASTER_WRITE_CASE = 1,
     TRANSACTION_WRITE_CASE,
