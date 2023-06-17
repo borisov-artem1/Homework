@@ -153,8 +153,32 @@ Matrix* mul(const Matrix* l, const Matrix* r) {
         puts(ROW_COL_ERR);
         return NULL;
     }
+    double eleml = 0.;
+    double elemr = 0.;
+    double total = 0.;
     Matrix* matrix = create_matrix(l->rows, r->cols);
-    for (int i = 0; i < l->rows * l->cols; i++) {
-        matrix->data_arr[i] =
+    for (int i = 0; i < l->rows; i++) {
+        for (int j = 0; j < r->cols; j++) {
+            total = 0.;
+            for (int k = 0; k < l->cols; k++) {
+                get_elem(l, i, k, &eleml);
+                get_elem(r, k, j, &elemr);
+                total += eleml * elemr;
+            }
+            set_elem(matrix, i, j, total);
+        }
     }
+    return matrix;
+}
+int det(const Matrix* matrix, double* val) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return 1;
+    }
+    if (matrix->rows != matrix->cols) {
+        puts(STATUS_CODE_ERROR);
+        return 1;
+    }
+
+    return 0;
 }
