@@ -2,6 +2,10 @@
 #define INVALID_STATUS_CODE "*** BEATEN PTR ***"
 #define STATUS_CODE_ERROR "*** ROWS, COLS MISMATCHES MATRIX->ROWS, MATRIX->COLS ***"
 #define ROW_COL_ERR "THE MATRICES ARE NOT CONSISTENT"
+enum {
+    STATUS_OK = 0,
+    STATUS_ERR
+};
 // NOTE(stitaevskiy): Place your implementation here
 
 Matrix* create_matrix_from_file(const char* path_file) {
@@ -76,7 +80,7 @@ int get_elem(const Matrix* matrix, int row, int col, double* val) {
         puts(INVALID_STATUS_CODE);
         return 1;
     }
-    *val = matrix->data_arr[(row - 1) * matrix->cols + col];
+    *val = matrix->data_arr[row * matrix->cols + col];
     return 0;
 }
 int set_elem(Matrix* matrix, int row, int col, double val) {
@@ -84,7 +88,7 @@ int set_elem(Matrix* matrix, int row, int col, double val) {
         puts(INVALID_STATUS_CODE);
         return 1;
     }
-    matrix->data_arr[(row - 1) * matrix->cols + col] = val;
+    matrix->data_arr[row * matrix->cols + col] = val;
     return 0;
 }
 Matrix* mul_scalar(const Matrix* matrix, double val) {
@@ -179,6 +183,100 @@ int det(const Matrix* matrix, double* val) {
         puts(STATUS_CODE_ERROR);
         return 1;
     }
-
+    *val = return_det(matrix);
     return 0;
+}
+double return_det(const Matrix *matrix) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return 0.;
+    }
+    if (matrix->rows == 1) {
+        return ret_elem(matrix, 0, 0);
+    }
+    else if (matrix->rows == 2) {
+        double val = ret_elem(matrix, 0, 0) * ret_elem(matrix, 1, 1)
+                - ret_elem(matrix, 0, 1) * ret_elem(matrix, 1, 0);
+        return val;
+    } else {
+        double answer = 0.;
+        double sign = 1.;
+        for (int i = 0; i < matrix->cols; i++) {
+            Matrix *minor = del_row_col(matrix, 0, i);
+            double mult = ret_elem(matrix, 0, i);
+            double buf = return_det(matrix);
+            answer += sign * mult * buf;
+            sign *= -1.;
+            free_matrix(minor);
+        }
+        return answer;
+    }
+}
+double ret_elem(Matrix *matrix, int row, int col) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return 0.;
+    }
+    double *val = matrix->data_arr + (row * matrix->cols + col);
+    return *val;
+}
+Matrix *del_row_col(Matrix *matrix, int row_p, int col_p) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return NULL;
+    }
+    int rows = matrix->rows - 1;
+    int cols = matrix->cols - 1;
+    Matrix *new_matrix = create_matrix(rows, cols);
+    for (int i = 0; i < matrix->rows; i++) {
+        for (int j = 0; j < matrix->cols; j++) {
+            if (i != row_p && j != col_p) {
+                *new_matrix->data_arr = ret_elem(matrix, i, j);
+                new_matrix->data_arr++;
+            }
+        }
+    }
+    return new_matrix;
+}
+
+Matrix* adj(const Matrix* matrix) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return NULL;
+    }
+    if (matrix->cols < 2 && matrix->rows < 2) {
+        puts(STATUS_CODE_ERROR);
+        return NULL;
+    }
+    double val = 0.;
+    Matrix *minor = NULL;
+    double determinant = 0.;
+    double comp_of_matrix = 0.;
+    double sign = 1.;
+    Matrix *new_matrix = create_matrix(matrix->rows, matrix->cols);
+    for (int i = 0; i < matrix->rows; i++) {
+        for (int j = 0; j < matrix->cols; j++) {
+            val = ret_elem(matrix, i, j);
+            minor = del_row_col(matrix, i, j);
+            det(minor, determinant);
+            comp_of_matrix = sign * determinant;
+            set_elem(new_matrix, i, j, comp_of_matrix);
+            sign *= -1.;
+            free_matrix(minor);
+        }
+    }
+    return new_matrix;
+}
+Matrix* inv(const Matrix* matrix) {
+    if (matrix == NULL) {
+        puts(INVALID_STATUS_CODE);
+        return NULL;
+    }
+    Matrix *adj_matrix = adj(matrix)
+    double determinant = 0.;
+    det(matrix, determinant);
+    determinant = 1 / determinant;
+    Matrix *inv_matrix = mul_scalar(adj_matrix, determinant);
+    free_matrix(adj_matrix);
+    return inv_matrix;
 }
