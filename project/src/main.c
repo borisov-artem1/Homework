@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "ceml_parse.h"
 
 
 int main(int argc, const char **argv) {
@@ -9,6 +10,7 @@ int main(int argc, const char **argv) {
 
     const char *path_to_eml = argv[1];
     puts(path_to_eml);
+    ceml_parse(path_to_eml);
 
     return 0;
 }
