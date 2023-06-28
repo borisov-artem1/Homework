@@ -58,22 +58,17 @@ typedef struct {
 
 static rule_t transitions[S_COUNT][L_COUNT] = {
                         //             L_SOME_CHAR                        L_COLON                           L_WS                           L_TAB                            L_TRANS                        L_DDASH                      L_BOUNDARY
-    /* S_BEGIN */      {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_KEY */        {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_VALUE */      {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_TRANS_SYM */  {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_BODY */       {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_DDASH */      {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_BOUNDARY */   {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
-    /* S_END */        {{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_BEGIN */      {{ S_KEY, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_KEY */        {{ S_ERR, NULL },{ S_VALUE, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_VALUE */      {{ S_ERR, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_TRANS_SYM, NULL }, { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_TRANS_SYM */  {{ S_KEY, NULL },{ S_ERR, NULL },  { S_VALUE, NULL },{ S_VALUE, NULL },{ S_BODY, NULL },      { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_BODY */       {{ S_ERR, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_DDASH */      {{ S_ERR, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_BOUNDARY */   {{ S_ERR, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
+    /* S_END */        {{ S_ERR, NULL },{ S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },  { S_ERR, NULL },       { S_ERR, NULL },{ S_ERR, NULL }},
 };
 
-bool ceml_parse (const char* eml) {
-    FILE* eml_file = fopen(eml, "r+");
-    if (!eml_file) {
-        puts("file doesn't opened");
-        return false;
-    }
+bool ceml_parse (FILE *eml_file) {
     state_t state = S_BEGIN;
 
     return true;

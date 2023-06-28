@@ -9,8 +9,12 @@ int main(int argc, const char **argv) {
     }
 
     const char *path_to_eml = argv[1];
-    puts(path_to_eml);
-    ceml_parse(path_to_eml);
-
+    FILE* eml_file = fopen(path_to_eml, "r+");
+    if (!eml_file) {
+        puts("file doesn't opened");
+        return 1;
+    }
+    ceml_parse(eml_file);
+    fclose(eml_file);
     return 0;
 }
