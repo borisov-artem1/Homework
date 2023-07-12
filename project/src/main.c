@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "ceml_parse.h"
 
-
 int main(int argc, const char **argv) {
     if (argc != 2) {
         return -1;
